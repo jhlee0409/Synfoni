@@ -13,6 +13,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { SocialButton } from "@/components/auth/social-button"
 
+/**
+ * Renders a user login form with email and password fields, a "Remember me" option, and social login buttons.
+ *
+ * The form manages its own state for user input, loading status, and error messages. On submission, it simulates authentication and redirects to the home page on success, or displays an error message on failure. Social login options for Google and GitHub are provided, along with links for password reset and registration.
+ */
 export function LoginForm() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)

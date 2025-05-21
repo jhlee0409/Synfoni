@@ -13,6 +13,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { SocialButton } from "@/components/auth/social-button"
 
+/****
+ * Renders a user registration form with client-side validation, error display, and simulated submission.
+ *
+ * The form collects name, email, password, and password confirmation, and requires acceptance of terms and conditions. Validation errors are shown inline. On successful submission, the user is redirected to the home page. Social login options for Google and GitHub are also provided.
+ */
 export function RegisterForm() {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState(false)

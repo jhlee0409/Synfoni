@@ -1,6 +1,11 @@
 import { AppShell } from "@/components/app-shell"
 import { WeeklyProgressView } from "@/components/weekly-progress-view"
 
+/**
+ * Renders the Weekly Progress page with a header and a detailed progress view.
+ *
+ * Displays a title, a descriptive subtitle, and the {@link WeeklyProgressView} component within an application shell layout.
+ */
 export default function WeeklyProgressPage() {
   return (
     <AppShell>

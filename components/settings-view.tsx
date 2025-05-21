@@ -38,6 +38,11 @@ import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Textarea } from "@/components/ui/textarea"
 
+/****
+ * Renders a comprehensive, multi-tabbed user settings interface for managing account, appearance, notifications, privacy, preferences, integrations, and data management options.
+ *
+ * The component organizes settings into categorized tabs, each containing grouped controls such as toggles, selectors, and action buttons for user preferences. All UI text is localized in Korean.
+ */
 export function SettingsView() {
   const { theme, setTheme } = useTheme()
   const [emailNotifications, setEmailNotifications] = useState(true)

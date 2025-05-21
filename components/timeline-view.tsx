@@ -61,6 +61,11 @@ const milestones = [
   },
 ]
 
+/**
+ * Renders an interactive dashboard for tracking skill development and milestones over time.
+ *
+ * Displays selectable time ranges, line and area charts for technology progress, and a list of key milestones with navigation options.
+ */
 export function TimelineView() {
   const [timeRange, setTimeRange] = useState("6m")
 

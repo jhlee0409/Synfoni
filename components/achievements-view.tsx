@@ -6,6 +6,11 @@ import { Trophy } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
+/**
+ * Renders a presentational section for displaying user achievements.
+ *
+ * Displays a header with a title, subtitle, and a navigation button to view all achievements. Below the header, a card provides a placeholder message and icon indicating that the achievements view is not yet implemented.
+ */
 export function AchievementsView() {
   return (
     <div className="space-y-6">

@@ -78,6 +78,11 @@ const achievements = [
   },
 ]
 
+/**
+ * Renders a tabbed interface displaying current goals, long-term goals, and achievements with progress indicators and milestone tracking.
+ *
+ * Provides interactive cards for weekly and monthly goals, a grid of long-term goals with milestone checklists, and a summary of achievements with progress toward upcoming targets. Navigation links allow users to set, view, or add goals and achievements.
+ */
 export function GoalsOverview() {
   return (
     <Tabs defaultValue="current">

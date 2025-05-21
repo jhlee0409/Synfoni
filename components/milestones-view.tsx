@@ -76,6 +76,11 @@ const milestoneTypes = [
 // All unique tags from milestones
 const allTags = Array.from(new Set(milestones.flatMap((milestone) => milestone.tags)))
 
+/**
+ * Displays a list of milestones with interactive filtering, searching, sorting, and tabbed categorization.
+ *
+ * Users can filter milestones by search query, type, and tags, sort them by date, and view them grouped by category tabs. The component provides controls for clearing filters and adding new milestones, and displays milestone details in card layouts.
+ */
 export function MilestonesView() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedType, setSelectedType] = useState("all")

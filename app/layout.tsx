@@ -13,6 +13,13 @@ export const metadata: Metadata = {
     generator: 'v0.dev'
 }
 
+/**
+ * Defines the root layout for the application, applying global font styles and theming.
+ *
+ * Wraps all child components with a theme provider that supports system theme detection and disables transitions during theme changes.
+ *
+ * @param children - The content to be rendered within the layout.
+ */
 export default function RootLayout({
   children,
 }: Readonly<{

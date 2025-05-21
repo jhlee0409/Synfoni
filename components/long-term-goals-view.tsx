@@ -6,6 +6,11 @@ import { PlusCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
+/**
+ * Renders a static user interface section for managing and viewing long-term career goals.
+ *
+ * Displays a header with a title, subtitle, and a button linking to the goal creation page, followed by a card containing a placeholder message for future implementation.
+ */
 export function LongTermGoalsView() {
   return (
     <div className="space-y-6">

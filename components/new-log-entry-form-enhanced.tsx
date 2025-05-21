@@ -54,6 +54,11 @@ const weeklyGoals = [
   },
 ] as WeeklyGoal[]
 
+/**
+ * Renders a form for creating a daily log entry with title, content, and tags, automatically linking related weekly goals based on selected tags.
+ *
+ * Users can add or remove tags, select from common tags, and view weekly goals that share any selected tags. Upon submission, the log entry is saved with associated goal IDs and the user is redirected to the daily log page.
+ */
 export function NewLogEntryFormEnhanced() {
   const router = useRouter()
   const [title, setTitle] = useState("")

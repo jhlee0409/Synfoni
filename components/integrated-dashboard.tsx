@@ -106,6 +106,13 @@ const sampleData = {
   ] as LongTermGoal[],
 }
 
+/**
+ * Renders a multi-tab dashboard for tracking and visualizing development activities, goals, milestones, and achievements.
+ *
+ * Displays overview statistics, recent daily logs, weekly goals, milestones, and long-term goals, with automatic linking of related items based on tags and references. Users can navigate between tabs to view or create logs, set goals, and review progress at different levels.
+ *
+ * @remark All data is static and for demonstration purposes; no asynchronous data fetching or error handling is implemented.
+ */
 export function IntegratedDashboard() {
   const [activeTab, setActiveTab] = useState("overview")
 
