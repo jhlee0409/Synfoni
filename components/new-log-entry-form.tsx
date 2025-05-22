@@ -27,6 +27,13 @@ const commonTags = [
   "testing",
 ]
 
+/**
+ * Renders a form for creating a new log entry with title, content, and tags.
+ *
+ * Users can enter a title and content, select from common tags or add custom tags, and submit the entry. Upon submission, the entry data is logged to the console and the user is redirected to the daily log page.
+ *
+ * @returns The React element representing the new log entry form.
+ */
 export function NewLogEntryForm() {
   const router = useRouter()
   const [title, setTitle] = useState("")

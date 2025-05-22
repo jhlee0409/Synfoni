@@ -46,6 +46,11 @@ const commonSkillTags = [
   "open-source",
 ]
 
+/**
+ * Renders a form for creating a new long-term goal with detailed fields and validation.
+ *
+ * The form allows users to input a goal title, description, category, optional target date, tags (including adding new tags and selecting from common skill tags), and multiple milestones. It validates required fields and ensures at least one milestone has a title. On successful submission, the form data is logged and the user is redirected to the long-term goals page.
+ */
 export function NewLongTermGoalForm() {
   const router = useRouter()
   const [title, setTitle] = useState("")

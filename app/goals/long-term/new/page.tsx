@@ -1,6 +1,9 @@
 import { AppShell } from "@/components/app-shell"
 import { NewLongTermGoalForm } from "@/components/new-long-term-goal-form"
 
+/**
+ * Renders the page for adding a new long-term development goal, including a header and the goal creation form within the application shell.
+ */
 export default function NewLongTermGoalPage() {
   return (
     <AppShell>

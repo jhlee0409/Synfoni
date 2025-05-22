@@ -31,6 +31,11 @@ const initialLogs = [
 
 const allTags = ["react", "next.js", "css", "tailwind", "design", "learning", "productivity"]
 
+/**
+ * Displays and manages daily log entries with tag-based filtering and entry creation.
+ *
+ * Provides an interface to view, filter, and add daily log entries. Users can filter logs by tags, add new entries with associated tags, and view recent entries. The component maintains its own state for logs, tag selections, and filters.
+ */
 export function DailyLogView() {
   const [logs, setLogs] = useState(initialLogs)
   const [newLog, setNewLog] = useState("")

@@ -1,6 +1,11 @@
 import { AppShell } from "@/components/app-shell"
 import { NewLogEntryFormEnhanced } from "@/components/new-log-entry-form-enhanced"
 
+/**
+ * Renders the page for creating a new daily log entry, including a heading, description, and the log entry form.
+ *
+ * Displays a form for users to record their development activities for the current day.
+ */
 export default function NewLogEntry() {
   return (
     <AppShell>

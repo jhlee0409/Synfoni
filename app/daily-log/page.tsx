@@ -1,6 +1,11 @@
 import { AppShell } from "@/components/app-shell"
 import { DailyLogView } from "@/components/daily-log-view"
 
+/**
+ * Renders the Daily Log page with a header and a view for recording and tracking daily development activities.
+ *
+ * Displays a title, a descriptive subtitle, and the {@link DailyLogView} component within an application shell layout.
+ */
 export default function DailyLog() {
   return (
     <AppShell>

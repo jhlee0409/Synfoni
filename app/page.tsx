@@ -1,6 +1,9 @@
 import { IntegratedDashboard } from "@/components/integrated-dashboard"
 import { AppShell } from "@/components/app-shell"
 
+/**
+ * Renders the main page layout for the Developer Growth Dashboard, including a header and the integrated dashboard view.
+ */
 export default function Home() {
   return (
     <AppShell>

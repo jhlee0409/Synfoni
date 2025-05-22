@@ -27,6 +27,11 @@ const actionTypes = {
 
 let count = 0
 
+/**
+ * Generates a unique string ID by incrementing a counter, wrapping at {@link Number.MAX_SAFE_INTEGER}.
+ *
+ * @returns A unique string identifier.
+ */
 function genId() {
   count = (count + 1) % Number.MAX_SAFE_INTEGER
   return count.toString()
@@ -133,6 +138,11 @@ const listeners: Array<(state: State) => void> = []
 
 let memoryState: State = { toasts: [] }
 
+/**
+ * Applies a toast action to update the global toast state and notifies all subscribed listeners of the new state.
+ *
+ * @param action - The action describing the toast state change to apply.
+ */
 function dispatch(action: Action) {
   memoryState = reducer(memoryState, action)
   listeners.forEach((listener) => {
@@ -142,6 +152,13 @@ function dispatch(action: Action) {
 
 type Toast = Omit<ToasterToast, "id">
 
+/**
+ * Creates a new toast notification and returns controls to update or dismiss it.
+ *
+ * The toast is immediately displayed with the provided properties and a unique ID. The returned object allows programmatic dismissal or updating of the toast.
+ *
+ * @returns An object containing the toast's {@link id}, a {@link dismiss} function to close the toast, and an {@link update} function to modify its properties.
+ */
 function toast({ ...props }: Toast) {
   const id = genId()
 
@@ -171,6 +188,11 @@ function toast({ ...props }: Toast) {
   }
 }
 
+/**
+ * React hook providing access to the current toast notifications and actions to create or dismiss toasts.
+ *
+ * @returns The current toast state, a function to create new toasts, and a function to dismiss toasts by ID or all toasts.
+ */
 function useToast() {
   const [state, setState] = React.useState<State>(memoryState)
 

@@ -20,6 +20,13 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar"
 
+/**
+ * Provides a dashboard layout shell with a sidebar navigation, dynamic header, and main content area.
+ *
+ * Renders a sidebar with navigation links, a theme toggle, and a version label. The main area displays a header with a route-based title and the provided {@link children} content.
+ *
+ * @param children - The content to display in the main area of the dashboard.
+ */
 export function DashboardShell({ children }: { children: React.ReactNode }) {
   const { setTheme, theme } = useTheme()
   const pathname = usePathname()
