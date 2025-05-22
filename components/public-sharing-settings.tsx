@@ -27,6 +27,7 @@ const userProfile = {
 }
 
 export function PublicSharingSettings() {
+ const [privacyLevel, setPrivacyLevel] = useState("balanced")
   const [publicProfile, setPublicProfile] = useState(true)
   const [sharingLevel, setSharingLevel] = useState("selective")
   const [profileData, setProfileData] = useState(userProfile)
@@ -265,22 +266,22 @@ export function PublicSharingSettings() {
 
           <Separator />
 
-          <div className="space-y-3">
-            <Label>Privacy Level</Label>
-            <Select defaultValue="balanced">
-              <SelectTrigger>
-                <SelectValue placeholder="Select privacy level" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="minimal">Minimal (Share as little as possible)</SelectItem>
-                <SelectItem value="balanced">Balanced (Recommended)</SelectItem>
-                <SelectItem value="open">Open (Share more details)</SelectItem>
-              </SelectContent>
-            </Select>
-            <p className="text-xs text-muted-foreground">
-              This setting controls the granularity of information shared in your public profile and logs.
-            </p>
-          </div>
+  <div className="space-y-3">
+    <Label>Privacy Level</Label>
+    <Select value={privacyLevel} onValueChange={setPrivacyLevel}>
+      <SelectTrigger>
+        <SelectValue placeholder="Select privacy level" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="minimal">Minimal (Share as little as possible)</SelectItem>
+        <SelectItem value="balanced">Balanced (Recommended)</SelectItem>
+        <SelectItem value="open">Open (Share more details)</SelectItem>
+      </SelectContent>
+    </Select>
+    <p className="text-xs text-muted-foreground">
+      This setting controls the granularity of information shared in your public profile and logs.
+    </p>
+  </div>
         </CardContent>
         <CardFooter className="flex justify-between">
           <Button variant="outline">Reset to Defaults</Button>
