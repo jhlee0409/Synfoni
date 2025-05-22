@@ -6,6 +6,11 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { AuthLayout } from "@/components/auth/auth-layout"
 
+/**
+ * Renders a password reset page with a form for users to request a reset link via email.
+ *
+ * The page includes an email input field, a submit button, and a link to return to the login page.
+ */
 export default function ResetPasswordPage() {
   return (
     <AuthLayout title="Reset password" description="Enter your email to receive a password reset link">

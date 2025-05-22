@@ -26,6 +26,15 @@ const userProfile = {
   avatar: "/placeholder.svg?height=100&width=100",
 }
 
+/**
+ * Renders a user interface for configuring and previewing public sharing settings for a user profile.
+ *
+ * Allows users to control profile visibility, select log sharing levels, edit profile information, choose which log types to share, and adjust additional privacy and display settings. Provides a live preview of how the public profile will appear to others.
+ *
+ * @returns The React component for managing and previewing public sharing preferences.
+ *
+ * @remark The "Save Settings" action only logs the current settings and displays a confirmation alert; it does not persist changes.
+ */
 export function PublicSharingSettings() {
  const [privacyLevel, setPrivacyLevel] = useState("balanced")
   const [publicProfile, setPublicProfile] = useState(true)

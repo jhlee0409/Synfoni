@@ -81,6 +81,17 @@ interface UserProfileViewProps {
   username: string
 }
 
+/**
+ * Renders a comprehensive user profile page with sections for personal information, achievements, popular tags, recent logs, activity, and milestones.
+ *
+ * Displays static sample data for the specified {@link username}, organized into a sidebar and a main content area with tabbed views.
+ *
+ * @param username - The username of the profile to display.
+ *
+ * @returns A React element representing the user profile interface.
+ *
+ * @remark This component currently uses static sample data and does not fetch dynamic user information.
+ */
 export function UserProfileView({ username }: UserProfileViewProps) {
   // In a real app, you would fetch the user data based on the username
   // For now, we'll just use the sample data

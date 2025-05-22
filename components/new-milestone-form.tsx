@@ -41,6 +41,13 @@ const commonTags = [
   "testing",
 ]
 
+/**
+ * Renders a form for creating a new milestone entry with fields for title, date, type, description, and tags.
+ *
+ * Users can select a date, choose a milestone type, enter a description, and manage tags by selecting from common options or adding custom tags. Upon submission, the milestone data is logged and the user is redirected to the timeline page.
+ *
+ * @returns The milestone creation form component.
+ */
 export function NewMilestoneForm() {
   const router = useRouter()
   const [title, setTitle] = useState("")

@@ -41,6 +41,13 @@ const weeklyData = {
   ],
 }
 
+/**
+ * Renders a weekly review dashboard with summary cards and tabbed views for activity, tags, and goals.
+ *
+ * Displays total entries, unique tags, most active day, and goals completed in summary cards. Below, provides tabbed sections with a bar chart of daily activity, a list of top tags with usage progress, and weekly goals with completion status.
+ *
+ * @returns A React element displaying the weekly review dashboard.
+ */
 export function WeeklyReviewView() {
   return (
     <div className="space-y-6">

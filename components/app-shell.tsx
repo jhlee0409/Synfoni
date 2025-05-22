@@ -29,6 +29,13 @@ interface AppShellProps {
   children: ReactNode
 }
 
+/**
+ * Provides the main application layout shell with a sidebar navigation, header, and content area.
+ *
+ * Renders a persistent sidebar with nested navigation menus, a sticky header with theme toggle and user avatar, and displays the provided {@link children} as the main content. The sidebar highlights the active route based on the current pathname and supports nested submenus for sections like Daily Log, Weekly Review, Timeline, and Goals.
+ *
+ * @param children - The content to display within the main area of the application shell.
+ */
 export function AppShell({ children }: AppShellProps) {
   const pathname = usePathname()
   const { setTheme, theme } = useTheme()

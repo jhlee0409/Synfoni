@@ -9,6 +9,13 @@ interface WeeklyActivityChartProps {
   }[]
 }
 
+/**
+ * Renders a responsive bar chart visualizing weekly activity counts by day.
+ *
+ * Displays each day's activity as a bar, with a custom tooltip showing the day and entry count on hover. The chart adapts to its container size and features rounded bars, horizontal grid lines, and styled axes.
+ *
+ * @param data - Array of objects representing days and their corresponding activity counts.
+ */
 export function WeeklyActivityChart({ data }: WeeklyActivityChartProps) {
   return (
     <div className="h-[200px] w-full">

@@ -1,6 +1,11 @@
 import { AppShell } from "@/components/app-shell"
 import { LongTermGoalsView } from "@/components/long-term-goals-view"
 
+/**
+ * Renders the Long-term Goals page with a header and the long-term goals view.
+ *
+ * Displays a titled section introducing long-term goals and includes the {@link LongTermGoalsView} component within an {@link AppShell} layout.
+ */
 export default function LongTermGoalsPage() {
   return (
     <AppShell>

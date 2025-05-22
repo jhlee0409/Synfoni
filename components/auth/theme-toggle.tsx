@@ -5,6 +5,11 @@ import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 
+/**
+ * Renders a button that toggles between light and dark themes.
+ *
+ * Displays animated sun and moon icons to indicate the current theme, and includes an accessible label for screen readers.
+ */
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme()
 

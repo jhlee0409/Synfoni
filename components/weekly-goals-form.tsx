@@ -30,6 +30,11 @@ const categories = [
   { value: "skill", label: "Skill Building" },
 ]
 
+/**
+ * Displays and manages a weekly goals list with add, toggle, delete, and save functionalities.
+ *
+ * Renders a form allowing users to view, add, complete, and remove weekly goals, each with a title and category. On submission, the current goals are logged and the user is navigated to the weekly review page.
+ */
 export function WeeklyGoalsForm() {
   const router = useRouter()
   const [goals, setGoals] = useState(initialGoals)

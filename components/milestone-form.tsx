@@ -129,6 +129,14 @@ export interface MilestoneFormProps {
   isEditing?: boolean
 }
 
+/**
+ * Renders a form for creating or editing a milestone entry, supporting fields for title, description, date, type, tags, notes, and related links.
+ *
+ * The form initializes with existing milestone data when editing, provides validation for required fields, and allows dynamic management of tags and related links. On submission, it logs the milestone data and navigates to the appropriate page based on the editing state.
+ *
+ * @param milestoneId - The ID of the milestone to edit, if applicable.
+ * @param isEditing - Whether the form is in editing mode. Defaults to false.
+ */
 export function MilestoneForm({ milestoneId, isEditing = false }: MilestoneFormProps) {
   const router = useRouter()
   const [title, setTitle] = useState("")

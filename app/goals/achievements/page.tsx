@@ -1,6 +1,11 @@
 import { AppShell } from "@/components/app-shell"
 import { AchievementsView } from "@/components/achievements-view"
 
+/**
+ * Renders the Achievements page with a header and a list of user achievements.
+ *
+ * Displays a title, a descriptive subtitle, and the {@link AchievementsView} component within an {@link AppShell} layout.
+ */
 export default function AchievementsPage() {
   return (
     <AppShell>

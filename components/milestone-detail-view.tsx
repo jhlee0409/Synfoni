@@ -142,6 +142,13 @@ interface MilestoneDetailViewProps {
   id: number
 }
 
+/****
+ * Displays a detailed view of a specific milestone, including its metadata, description, tags, related links, and related milestones.
+ *
+ * Renders a fallback UI if the milestone with the given ID does not exist.
+ *
+ * @param id - The unique identifier of the milestone to display.
+ */
 export function MilestoneDetailView({ id }: MilestoneDetailViewProps) {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false)
 

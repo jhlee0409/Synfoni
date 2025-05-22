@@ -1,6 +1,11 @@
 import { MilestoneForm } from "@/components/milestone-form"
 import { AppShell } from "@/components/app-shell"
 
+/**
+ * Renders a page for adding a new milestone, including a header and a milestone input form.
+ *
+ * Displays a title, a descriptive subtitle, and the {@link MilestoneForm} component within an {@link AppShell} layout.
+ */
 export default function NewMilestonePage() {
   return (
     <AppShell>

@@ -93,6 +93,11 @@ const quickActions = [
   },
 ]
 
+/**
+ * Renders a user dashboard displaying weekly activity, growth trends, quick actions, and recent development logs.
+ *
+ * The dashboard includes summary statistics for the current week, a chart of daily activity, shortcut buttons for common tasks, and a list of recent log entries. All data is presented using a responsive grid layout within an application shell.
+ */
 export function Dashboard() {
   return (
     <AppShell>

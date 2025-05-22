@@ -59,6 +59,11 @@ const categories = [
   { value: "skill", label: "Skill Building" },
 ]
 
+/**
+ * Displays a dashboard for tracking and managing weekly goals progress with category and week filtering.
+ *
+ * Renders a summary of overall progress, completed goals, and a list of individual goal cards. Users can filter goals by category, select the week to view, and navigate to goal management pages.
+ */
 export function WeeklyProgressView() {
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [selectedWeek, setSelectedWeek] = useState("current")

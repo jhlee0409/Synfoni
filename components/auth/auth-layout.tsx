@@ -11,6 +11,15 @@ interface AuthLayoutProps {
   description: string
 }
 
+/**
+ * Provides a structured layout for authentication pages with a header, centered content, and footer.
+ *
+ * Renders a consistent page structure including a site title, theme toggle, navigation links, and space for custom content, title, and description.
+ *
+ * @param children - React nodes to display within the main content area.
+ * @param title - The heading displayed above the main content.
+ * @param description - A subtitle or explanatory text shown below the title.
+ */
 export function AuthLayout({ children, title, description }: AuthLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
