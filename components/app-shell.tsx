@@ -1,13 +1,24 @@
-"use client"
+"use client";
 
-import type { ReactNode } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Calendar, FileText, LayoutDashboard, LineChart, Moon, Settings, Sun, Target, User } from "lucide-react"
+import type { ReactNode } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {
+  Calendar,
+  FileText,
+  LayoutDashboard,
+  LineChart,
+  Moon,
+  Settings,
+  Sun,
+  Target,
+  User,
+} from "lucide-react";
 
-import { useTheme } from "next-themes"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
+import { useTheme } from "next-themes";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -23,10 +34,10 @@ import {
   SidebarProvider,
   SidebarRail,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 interface AppShellProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 /**
@@ -37,8 +48,14 @@ interface AppShellProps {
  * @param children - The content to display within the main area of the application shell.
  */
 export function AppShell({ children }: AppShellProps) {
-  const pathname = usePathname()
-  const { setTheme, theme } = useTheme()
+  const pathname = usePathname();
+  const { setTheme, theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // 클라이언트 사이드에서만 마운트 상태를 true로 설정
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <SidebarProvider>
@@ -62,7 +79,13 @@ export function AppShell({ children }: AppShellProps) {
 
               {/* Daily Log Section */}
               <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/daily-log" || pathname.startsWith("/daily-log/")}>
+                <SidebarMenuButton
+                  asChild
+                  isActive={
+                    pathname === "/daily-log" ||
+                    pathname.startsWith("/daily-log/")
+                  }
+                >
                   <Link href="/daily-log">
                     <FileText className="h-4 w-4" />
                     <span>Daily Log</span>
@@ -70,7 +93,10 @@ export function AppShell({ children }: AppShellProps) {
                 </SidebarMenuButton>
                 <SidebarMenuSub>
                   <SidebarMenuSubItem>
-                    <SidebarMenuSubButton asChild isActive={pathname === "/daily-log/new"}>
+                    <SidebarMenuSubButton
+                      asChild
+                      isActive={pathname === "/daily-log/new"}
+                    >
                       <Link href="/daily-log/new">New Entry</Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
@@ -81,7 +107,10 @@ export function AppShell({ children }: AppShellProps) {
               <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
-                  isActive={pathname === "/weekly-review" || pathname.startsWith("/weekly-review/")}
+                  isActive={
+                    pathname === "/weekly-review" ||
+                    pathname.startsWith("/weekly-review/")
+                  }
                 >
                   <Link href="/weekly-review">
                     <Calendar className="h-4 w-4" />
@@ -90,12 +119,18 @@ export function AppShell({ children }: AppShellProps) {
                 </SidebarMenuButton>
                 <SidebarMenuSub>
                   <SidebarMenuSubItem>
-                    <SidebarMenuSubButton asChild isActive={pathname === "/weekly-review/goals"}>
+                    <SidebarMenuSubButton
+                      asChild
+                      isActive={pathname === "/weekly-review/goals"}
+                    >
                       <Link href="/weekly-review/goals">Set Goals</Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
                   <SidebarMenuSubItem>
-                    <SidebarMenuSubButton asChild isActive={pathname === "/weekly-review/progress"}>
+                    <SidebarMenuSubButton
+                      asChild
+                      isActive={pathname === "/weekly-review/progress"}
+                    >
                       <Link href="/weekly-review/progress">Track Progress</Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
@@ -104,7 +139,13 @@ export function AppShell({ children }: AppShellProps) {
 
               {/* Timeline Section with Milestones */}
               <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/timeline" || pathname.startsWith("/timeline/")}>
+                <SidebarMenuButton
+                  asChild
+                  isActive={
+                    pathname === "/timeline" ||
+                    pathname.startsWith("/timeline/")
+                  }
+                >
                   <Link href="/timeline">
                     <LineChart className="h-4 w-4" />
                     <span>Timeline</span>
@@ -114,13 +155,19 @@ export function AppShell({ children }: AppShellProps) {
                   <SidebarMenuSubItem>
                     <SidebarMenuSubButton
                       asChild
-                      isActive={pathname === "/timeline/milestones" || pathname.startsWith("/timeline/milestones/")}
+                      isActive={
+                        pathname === "/timeline/milestones" ||
+                        pathname.startsWith("/timeline/milestones/")
+                      }
                     >
                       <Link href="/timeline/milestones">Milestones</Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
                   <SidebarMenuSubItem>
-                    <SidebarMenuSubButton asChild isActive={pathname === "/timeline/milestones/new"}>
+                    <SidebarMenuSubButton
+                      asChild
+                      isActive={pathname === "/timeline/milestones/new"}
+                    >
                       <Link href="/timeline/milestones/new">Add Milestone</Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
@@ -129,7 +176,12 @@ export function AppShell({ children }: AppShellProps) {
 
               {/* Goals Section */}
               <SidebarMenuItem>
-                <SidebarMenuButton asChild isActive={pathname === "/goals" || pathname.startsWith("/goals/")}>
+                <SidebarMenuButton
+                  asChild
+                  isActive={
+                    pathname === "/goals" || pathname.startsWith("/goals/")
+                  }
+                >
                   <Link href="/goals">
                     <Target className="h-4 w-4" />
                     <span>Goals</span>
@@ -137,12 +189,18 @@ export function AppShell({ children }: AppShellProps) {
                 </SidebarMenuButton>
                 <SidebarMenuSub>
                   <SidebarMenuSubItem>
-                    <SidebarMenuSubButton asChild isActive={pathname === "/goals/long-term"}>
+                    <SidebarMenuSubButton
+                      asChild
+                      isActive={pathname === "/goals/long-term"}
+                    >
                       <Link href="/goals/long-term">Long-term</Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
                   <SidebarMenuSubItem>
-                    <SidebarMenuSubButton asChild isActive={pathname === "/goals/achievements"}>
+                    <SidebarMenuSubButton
+                      asChild
+                      isActive={pathname === "/goals/achievements"}
+                    >
                       <Link href="/goals/achievements">Achievements</Link>
                     </SidebarMenuSubButton>
                   </SidebarMenuSubItem>
@@ -153,7 +211,10 @@ export function AppShell({ children }: AppShellProps) {
               <SidebarMenuItem>
                 <SidebarMenuButton
                   asChild
-                  isActive={pathname === "/public-logs" || pathname.startsWith("/public-logs/")}
+                  isActive={
+                    pathname === "/public-logs" ||
+                    pathname.startsWith("/public-logs/")
+                  }
                 >
                   <Link href="/public-logs">
                     <User className="h-4 w-4" />
@@ -165,7 +226,12 @@ export function AppShell({ children }: AppShellProps) {
           </SidebarContent>
           <SidebarFooter className="border-t border-sidebar-border">
             <div className="p-4">
-              <SidebarMenuButton asChild isActive={pathname === "/settings" || pathname.startsWith("/settings/")}>
+              <SidebarMenuButton
+                asChild
+                isActive={
+                  pathname === "/settings" || pathname.startsWith("/settings/")
+                }
+              >
                 <Link href="/settings">
                   <Settings className="h-4 w-4" />
                   <span>Settings</span>
@@ -189,11 +255,22 @@ export function AppShell({ children }: AppShellProps) {
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                   className="rounded-full"
                 >
-                  {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                  {mounted ? (
+                    theme === "dark" ? (
+                      <Sun className="h-5 w-5" />
+                    ) : (
+                      <Moon className="h-5 w-5" />
+                    )
+                  ) : (
+                    <div className="h-5 w-5" /> /* 마운트되기 전에는 빈 div 렌더링 */
+                  )}
                   <span className="sr-only">Toggle theme</span>
                 </Button>
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src="/placeholder.svg?height=32&width=32" alt="@username" />
+                  <AvatarImage
+                    src="/placeholder.svg?height=32&width=32"
+                    alt="@username"
+                  />
                   <AvatarFallback>JD</AvatarFallback>
                 </Avatar>
               </div>
@@ -203,5 +280,5 @@ export function AppShell({ children }: AppShellProps) {
         </SidebarInset>
       </div>
     </SidebarProvider>
-  )
+  );
 }
