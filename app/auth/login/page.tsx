@@ -1,5 +1,5 @@
-import { LoginForm } from "@/components/auth/login-form"
-import { AuthLayout } from "@/components/auth/auth-layout"
+import { LoginForm } from "@/components/auth/login-form";
+import { AuthLayout } from "@/components/auth/auth-layout";
 
 /**
  * Renders the login page with a layout and login form.
@@ -8,8 +8,11 @@ import { AuthLayout } from "@/components/auth/auth-layout"
  */
 export default function LoginPage() {
   return (
-    <AuthLayout title="Welcome back" description="Enter your credentials to access your account">
+    <AuthLayout
+      title="Welcome back"
+      description="Sign in or sign up using your GitHub account"
+    >
       <LoginForm />
     </AuthLayout>
-  )
+  );
 }

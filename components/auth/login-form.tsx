@@ -1,117 +1,51 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { Github } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { SocialButton } from "@/components/auth/social-button"
+import { Github } from "lucide-react";
+import { SocialButton } from "@/components/auth/social-button";
+import { supabase } from "@/utils/supabase/client";
 
 /**
  * Renders a user login form with email and password fields, a "Remember me" option, and social login buttons.
  *
  * The form manages its own state for user input, loading status, and error messages. On submission, it simulates authentication and redirects to the home page on success, or displays an error message on failure. Social login options for Google and GitHub are provided, along with links for password reset and registration.
  */
+
+const getURL = () => {
+  let url =
+    process?.env?.NEXT_PUBLIC_SITE_URL ?? // Set this to your site URL in production env.
+    process?.env?.NEXT_PUBLIC_VERCEL_URL ?? // Automatically set by Vercel.
+    "http://localhost:3000/";
+  // Make sure to include `https://` when not localhost.
+  url = url.startsWith("http") ? url : `https://${url}`;
+  // Make sure to include a trailing `/`.
+  url = url.endsWith("/") ? url : `${url}/`;
+  return url;
+};
+
 export function LoginForm() {
-  const router = useRouter()
-  const [isLoading, setIsLoading] = useState(false)
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState<string | null>(null)
+  async function signOut() {
+    const { error } = await supabase.auth.signOut();
+    console.log("error", error);
+  }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError(null)
-    setIsLoading(true)
-
-    try {
-      // In a real app, you would call your authentication API here
-      // For demo purposes, we'll simulate a successful login after a delay
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      // Redirect to dashboard after successful login
-      router.push("/")
-    } catch (err) {
-      setError("Invalid email or password. Please try again.")
-    } finally {
-      setIsLoading(false)
-    }
+  async function signInWithGithub() {
+    await supabase.auth.signInWithOAuth({
+      provider: "github",
+      options: {
+        redirectTo: getURL() + "auth/callback",
+      },
+    });
   }
 
   return (
-    <div className="grid gap-6">
-      <form onSubmit={handleSubmit}>
-        <div className="grid gap-4">
-          <div className="grid gap-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="name@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              autoComplete="email"
-              disabled={isLoading}
-              required
-            />
-          </div>
-          <div className="grid gap-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password">Password</Label>
-              <Link href="/auth/reset-password" className="text-sm text-primary hover:underline">
-                Forgot password?
-              </Link>
-            </div>
-            <Input
-              id="password"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete="current-password"
-              disabled={isLoading}
-              required
-            />
-          </div>
-          <div className="flex items-center space-x-2">
-            <Checkbox id="remember" />
-            <Label htmlFor="remember" className="text-sm font-normal">
-              Remember me for 30 days
-            </Label>
-          </div>
-          {error && <p className="text-sm text-destructive">{error}</p>}
-          <Button type="submit" className="w-full" disabled={isLoading}>
-            {isLoading ? "Signing in..." : "Sign in"}
-          </Button>
-        </div>
-      </form>
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t" />
-        </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-2 text-muted-foreground">Or continue with</span>
-        </div>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <SocialButton provider="google">Google</SocialButton>
-        <SocialButton provider="github">
-          <Github className="mr-2 h-4 w-4" />
-          GitHub
-        </SocialButton>
-      </div>
-      <div className="text-center text-sm">
-        Don&apos;t have an account?{" "}
-        <Link href="/auth/register" className="font-medium text-primary hover:underline">
-          Sign up
-        </Link>
-      </div>
+    <div>
+      <SocialButton provider="github" onClick={signInWithGithub}>
+        <Github className="mr-2 h-4 w-4" />
+        GitHub
+      </SocialButton>
+      <button type="button" onClick={signOut}>
+        로그아웃
+      </button>
     </div>
-  )
+  );
 }
