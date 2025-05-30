@@ -43,9 +43,6 @@ export function LoginForm() {
         <Github className="mr-2 h-4 w-4" />
         GitHub
       </SocialButton>
-      <button type="button" onClick={signOut}>
-        로그아웃
-      </button>
     </div>
   );
 }
