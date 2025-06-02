@@ -3,8 +3,9 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
 import { CheckCircle2, X } from "lucide-react"
+
+import { useCreateDailyLog } from "@/hooks/useCreateDailyLog"
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -12,7 +13,7 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import type { WeeklyGoal } from "@/lib/types"
+import type { CreateDailyLogRequest, WeeklyGoal } from "@/lib/types"
 
 // Sample data
 const commonTags = [
@@ -60,12 +61,14 @@ const weeklyGoals = [
  * Users can add or remove tags, select from common tags, and view weekly goals that share any selected tags. Upon submission, the log entry is saved with associated goal IDs and the user is redirected to the daily log page.
  */
 export function NewLogEntryFormEnhanced() {
-  const router = useRouter()
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [selectedTags, setSelectedTags] = useState<string[]>([])
   const [newTag, setNewTag] = useState("")
   const [relatedGoals, setRelatedGoals] = useState<WeeklyGoal[]>([])
+  
+  // useCreateDailyLog 커스텀 훅 사용
+  const { createLog, isSubmitting, error } = useCreateDailyLog()
 
   // Automatically find related goals when tags change
   useEffect(() => {
@@ -92,24 +95,20 @@ export function NewLogEntryFormEnhanced() {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
     if (!title.trim() || !content.trim()) {
       return
     }
 
-    // Save with automatically linked goal IDs
-    console.log({
+    // 커스텀 훅을 사용하여 로그 저장
+    await createLog({
       title,
       content,
       tags: selectedTags,
-      date: new Date().toISOString(),
-      autoLinkedGoals: relatedGoals.map((g) => g.id),
+      linkedGoalIds: relatedGoals.map((g) => g.id),
     })
-
-    // Navigate to daily log page
-    router.push("/daily-log")
   }
 
   return (
@@ -218,10 +217,12 @@ export function NewLogEntryFormEnhanced() {
           )}
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Button variant="outline" onClick={() => router.back()} type="button">
-            Cancel
+          <Button variant="outline" onClick={() => window.history.back()} type="button" disabled={isSubmitting}>
+            취소
           </Button>
-          <Button type="submit">Save</Button>
+          <Button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "저장 중..." : "저장"}
+          </Button>
         </CardFooter>
       </Card>
     </form>
